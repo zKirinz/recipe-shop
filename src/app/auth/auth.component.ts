@@ -7,10 +7,10 @@ import {
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
-
 import { Store } from '@ngrx/store';
-import { AppState } from '../store/app.reducer';
+
 import authActions from './store';
+import { AppState } from '../store/app.reducer';
 import { AlertComponent } from './../shared/alert/alert.component';
 import { PlaceholderDirective } from '../shared/placeholder/placeholder.directive';
 

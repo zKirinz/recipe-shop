@@ -135,20 +135,17 @@ export class AuthEffects {
   authAutoLogin = this.actions$.pipe(
     ofType(auth.AUTO_LOGIN),
     map(() => {
-      let userData: {
+      const userData: {
         email: string;
         id: string;
         _token: string;
         _tokenExpirationDate: string;
-      } | null;
-      if (localStorage.getItem('userData')) {
-        userData = JSON.parse(localStorage.getItem('userData') as string);
-      } else {
-        userData = null;
-      }
+      } | null = localStorage.getItem('userData')
+        ? JSON.parse(localStorage.getItem('userData')!)
+        : null;
 
       if (!userData) {
-        return { type: 'DUMMY' };
+        return { type: auth.AUTHENTICATE_FAIL };
       }
 
       const loadedUser = new User(
@@ -172,7 +169,7 @@ export class AuthEffects {
           redirect: false,
         });
       }
-      return { type: 'DUMMY' };
+      return { type: auth.AUTHENTICATE_FAIL };
     })
   );
 

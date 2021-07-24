@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import { AppState } from '../store/app.reducer';
@@ -18,7 +17,7 @@ export interface AuthResponseData {
 export class AuthService {
   private tokenExpirationTimer: any;
 
-  constructor(private router: Router, private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>) {}
 
   setLogoutTimer(expirationDuration: number) {
     this.tokenExpirationTimer = setTimeout(() => {
