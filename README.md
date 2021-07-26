@@ -15,7 +15,7 @@ You can consider using `Recipe Shop` for produciton if only `you improve it`.
 - Backend
   - Firebase - Authentication, Realtime Database.
 
-**Note:** This application is built with Angular version 12. Be careful with dependencies version which can make conflicts prevent this application from bootstrapping.
+**Note:** Switch to branch `pure-service` if you want to see this application's states managed by Angular services.
 
 ## Some preview images
 <img src="./docs/images/auth-page.png" width="400" height="217" />&nbsp;<img src="./docs/images/detail-recipe-page.png" width="400" height="217" />
