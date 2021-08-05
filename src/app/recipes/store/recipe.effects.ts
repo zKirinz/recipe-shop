@@ -16,7 +16,7 @@ export class RecipeEffects {
     ofType(recipe.FETCH_RECIPES),
     switchMap(() => {
       return this.http.get<Recipe[]>(
-        'https://recipe-shopping-angular-b7b04-default-rtdb.asia-southeast1.firebasedatabase.app/recipes.json'
+        'https://udemy-37087-default-rtdb.asia-southeast1.firebasedatabase.app/recipe-shop-Angular/recipes.json'
       );
     }),
     map((recipes) => {
@@ -38,7 +38,7 @@ export class RecipeEffects {
     withLatestFrom(this.store.select('recipes')),
     switchMap(([_, recipesState]) => {
       return this.http.put(
-        'https://recipe-shopping-angular-b7b04-default-rtdb.asia-southeast1.firebasedatabase.app/recipes.json',
+        'https://udemy-37087-default-rtdb.asia-southeast1.firebasedatabase.app/recipe-shop-Angular/recipes.json',
         recipesState.recipes
       );
     })
