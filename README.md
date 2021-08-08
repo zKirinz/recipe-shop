@@ -1,6 +1,6 @@
 # <img src="./src/assets/images/logo.png" width="50" height="50" /> Recipe Shop
 
-## [Live Demo](https://youtu.be/u7zg9IBM7uQ)
+## [Live Demo](https://youtu.be/8SchbagYCMY)
 ## What is Recipe Shop?
 - A recipe shop application that allow you to add foods as well as its ingredients and then pick ingredients to your bag.
 - The main purpose of this project is to practice with Angular ecosystem and some third-party library that very friendly with Angular such as NgRx follow with its best practices.
