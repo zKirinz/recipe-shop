@@ -7,6 +7,8 @@
 - Therefore, this application `shouldn't be used for production` because it's created to be quite simple so as for everyone easy to understand the workflow.
 You can consider using `Recipe Shop` for produciton if only `you improve it`.
 
+**Note:** This branch is using `NgRx` as state management. Switch to branch `main` if you want to see this application's states managed by `Angular services`.
+
 ## Technology
 - Frontend
   - Angular -  A component-based Framework
@@ -14,8 +16,6 @@ You can consider using `Recipe Shop` for produciton if only `you improve it`.
   - NgRx/store - State Management
 - Backend
   - Firebase - Authentication, Realtime Database.
-
-**Note:** Switch to branch `pure-service` if you want to see this application's states managed by Angular services.
 
 ## Some preview images
 <img src="./docs/images/auth-page.png" width="400" height="217" />&nbsp;<img src="./docs/images/detail-recipe-page.png" width="400" height="217" />
