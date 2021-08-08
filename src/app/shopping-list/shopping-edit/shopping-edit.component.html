@@ -1,50 +1,59 @@
 <div class="row">
-  <div class="col-xs-12">
-    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <div class="col-12">
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm" class="makeMeSmall">
       <div class="row">
-        <div class="col-sm-5 form-group">
-          <label for="name">Name</label>
+        <div class="col-sm-5 form-group smallerTextBoxes">
+          <label for="name" class="removeLabelMarginremoveLabelMargin">
+            Name
+          </label>
           <input
+            name="name"
             id="name"
             type="text"
-            class="form-control"
-            name="name"
-            ngModel
             required
+            maxlength="25"
+            class="form-control"
+            ngModel
           />
         </div>
-        <div class="col-sm-2 form-group">
-          <label for="amount">Amount</label>
+        <div class="col-sm-2 form-group smallerTextBoxes">
+          <label for="amount" class="removeLabelMargin">Amount</label>
           <input
+            type="text"
             id="amount"
-            type="number"
-            class="form-control"
             name="amount"
-            ngModel
             required
             pattern="^[1-9]+[0-9]*$"
+            maxlength="3"
+            onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
+            class="form-control smallerTextBoxes"
+            ngModel
           />
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-md-7 col-sm-12 btn-group">
           <button
             type="submit"
-            class="btn btn-success"
+            class="btn btn-success btn-responsive"
             [disabled]="!form.valid"
           >
             {{ editMode ? "Update" : "Add" }}
           </button>
-          &nbsp;
           <button
             type="button"
-            class="btn btn-danger"
+            class="btn btn-danger btn-responsive"
+            [disabled]="!editMode || isEmpty"
             (click)="onDelete()"
             *ngIf="editMode"
           >
-            Delete</button
-          >&nbsp;
-          <button type="button" class="btn btn-primary" (click)="onClear()">
+            Delete
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary btn-responsive"
+            (click)="onClear()"
+          >
             Clear
           </button>
         </div>

@@ -1,4 +1,11 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -8,21 +15,25 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
+  styleUrls: ['./shopping-edit.component.css'],
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
   @ViewChild('form') shoppingForm!: NgForm;
   subscription!: Subscription;
-  editMode = false;
+  editMode: boolean = false;
   editedItemIndex!: number;
   editedItem!: Ingredient;
+  isEmpty: boolean = false;
+  @Output('clearRequired') clearRequired = new EventEmitter();
 
   constructor(private shoppingListService: ShoppingListService) {}
 
   ngOnInit() {
     this.subscription = this.shoppingListService.startedEditing.subscribe(
       (index: number) => {
-        this.editedItemIndex = index;
         this.editMode = true;
+        this.editedItemIndex = index;
+        this.shoppingListService.modeChanged.next(this.editMode);
         this.editedItem = this.shoppingListService.getIngredient(index);
         this.shoppingForm.setValue({
           name: this.editedItem.name,
@@ -30,6 +41,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
         });
       }
     );
+    this.isEmpty = this.shoppingListService.ingredients.length == 0;
   }
 
   onSubmit(form: NgForm) {
@@ -46,15 +58,20 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     }
     this.editMode = false;
     form.reset();
+    this.isEmpty = this.shoppingListService.ingredients.length == 0;
+    this.clearRequired.emit();
   }
 
   onClear() {
-    this.shoppingForm.reset();
     this.editMode = false;
+    this.shoppingForm.reset();
+    this.shoppingListService.modeChanged.next(this.editMode);
+    this.clearRequired.emit();
   }
 
   onDelete() {
     this.shoppingListService.deleteIngreident(this.editedItemIndex);
+    this.isEmpty = this.shoppingListService.ingredients.length == 0;
     this.onClear();
   }
 

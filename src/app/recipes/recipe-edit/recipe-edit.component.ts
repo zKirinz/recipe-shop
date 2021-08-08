@@ -7,11 +7,13 @@ import { RecipeService } from '../recipe.service';
 @Component({
   selector: 'app-recipe-edit',
   templateUrl: './recipe-edit.component.html',
+  styleUrls: ['./recipe-edit.component.css'],
 })
 export class RecipeEditComponent implements OnInit {
   id!: number;
   editMode = false;
   recipeForm!: FormGroup;
+  noOfIngredients!: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -51,6 +53,7 @@ export class RecipeEditComponent implements OnInit {
           );
         }
       }
+      this.noOfIngredients = recipe.ingredients.length;
     }
 
     this.recipeForm = new FormGroup({
@@ -92,5 +95,13 @@ export class RecipeEditComponent implements OnInit {
 
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
+  }
+
+  scrollTo(): void {
+    var headerOffset = 87;
+    window.scrollTo({
+      top: headerOffset,
+      behavior: 'smooth',
+    });
   }
 }

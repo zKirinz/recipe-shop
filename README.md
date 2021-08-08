@@ -3,10 +3,11 @@
 ## [Live Demo](https://youtu.be/u7zg9IBM7uQ)
 ## What is Recipe Shop?
 - A recipe shop application that allow you to add foods as well as its ingredients and then pick ingredients to your bag.
-- The main purpose of this project is to practice with Angular ecosystem and some third-party library that very friendly with Angular such as NgRx follow with its best practices.
+- The main purpose of this project is to practice with `Angular` ecosystem and some third-party library that very friendly with Angular such as `NgRx` follow with its best practices.
 - Therefore, this application `shouldn't be used for production` because it's created to be quite simple so as for everyone easy to understand the workflow.
 You can consider using `Recipe Shop` for produciton if only `you improve it`.
 
+**Note:** This branch is using `Angular service` as state managment. Switch to branch `ngrx` if you want to see this application's states managed by [NgRx/store](https://ngrx.io/guide/store).
 ## Technology
 - Frontend
   - Angular -  A component-based Framework
@@ -14,11 +15,9 @@ You can consider using `Recipe Shop` for produciton if only `you improve it`.
 - Backend
   - Firebase - Authentication, Realtime Database.
 
-**Note:** Switch to branch `main` if you want to see this application's states managed by [NgRx/store](https://ngrx.io/guide/store).
-
 ## Some preview images
-<img src="./docs/images/auth-page.png" width="400" height="217" />&nbsp;<img src="./docs/images/detail-recipe-page.png" width="400" height="217" />
-<img src="./docs/images/edit-recipe-page.png" width="400" height="217" />&nbsp;<img src="./docs/images/shopping-list-page.png" width="400" height="217" />
+<img src="./docs/images/auth-page.png" width="400" height="217" />&nbsp;<img src="./docs/images/recipes-list-page.png" width="400" height="217" />
+<img src="./docs/images/detail-recipe-page.png" width="400" height="217" />&nbsp;<img src="./docs/images/shopping-list-page.png" width="400" height="217" />
 
 ## Available Scripts
 Before jump in to run this application:

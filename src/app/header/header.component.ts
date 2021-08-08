@@ -11,6 +11,7 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
+  isCollapsed = true;
   private userSub!: Subscription;
   constructor(
     private dataStorageService: DataStorageService,
@@ -20,6 +21,21 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.userSub = this.authService.user.subscribe((user) => {
       this.isAuthenticated = !!user;
+    });
+  }
+
+  collapseToggle() {
+    this.isCollapsed = !this.isCollapsed;
+  }
+
+  collapse() {
+    this.isCollapsed = true;
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
     });
   }
 

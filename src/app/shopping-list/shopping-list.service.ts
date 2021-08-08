@@ -4,6 +4,7 @@ import { Ingredient } from '../shared/ingredient.model';
 
 export class ShoppingListService {
   ingredientsChanged = new Subject<Ingredient[]>();
+  modeChanged = new Subject<boolean>();
   startedEditing = new Subject<number>();
   ingredients: Ingredient[] = [];
 

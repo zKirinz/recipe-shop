@@ -1,12 +1,16 @@
 <ng-template appPlaceholder></ng-template>
-<div class="row">
+<div class="row justify-content-center">
   <div class="col-xs-12 col-md-6 col-md-offset-3">
     <!-- <app-alert
       [message]="error"
       *ngIf="error"
       (close)="onHandleError()"
     ></app-alert> -->
-    <div *ngIf="isLoading" style="text-align: center">
+    <div
+      *ngIf="isLoading"
+      class="row justify-content-center align-items-center"
+      style="height: 30vh; min-height: 120px"
+    >
       <app-loading-spinner></app-loading-spinner>
     </div>
     <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
@@ -15,11 +19,12 @@
         <input
           type="email"
           id="email"
-          class="form-control"
-          ngModel
           name="email"
+          placeholder="Enter email"
           required
           email
+          class="form-control"
+          ngModel
         />
       </div>
       <div class="form-group">
@@ -27,22 +32,27 @@
         <input
           type="password"
           id="password"
-          class="form-control"
           ngModel
           name="password"
           required
           minlength="6"
+          class="form-control"
+          placeholder="Password"
         />
       </div>
-      <div>
+      <div class="btn-group">
         <button
           type="submit"
-          class="btn btn-primary"
+          class="btn btn-primary btn-responsive"
           [disabled]="!authForm.valid"
         >
-          {{ isLoginMode ? "Login" : "Sign Up" }}</button
-        >&nbsp;
-        <button type="button" class="btn btn-primary" (click)="onSwitchMode()">
+          {{ isLoginMode ? "Login" : "Sign Up" }}
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-responsive"
+          (click)="onSwitchMode()"
+        >
           Switch to {{ isLoginMode ? "Sign Up" : "Login" }}
         </button>
       </div>

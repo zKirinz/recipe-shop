@@ -7,6 +7,7 @@ import { Recipe } from '../recipe.model';
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
+  styleUrls: ['./recipe-detail.component.css'],
 })
 export class RecipeDetailComponent implements OnInit {
   recipe!: Recipe;
@@ -25,16 +26,51 @@ export class RecipeDetailComponent implements OnInit {
     });
   }
 
-  onAddToShoppingList() {
-    this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
+  scrollToElement($element: HTMLElement): void {
+    $element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
+    });
   }
 
-  onEditRecipe() {
-    this.router.navigate(['edit'], { relativeTo: this.route });
+  onAddToShoppingList() {
+    this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
+
+  onEditRecipe($element: HTMLElement) {
+    // this.router.navigate(['edit'], { relativeTo: this.route });
+    if (screen.width <= 767) {
+      this.scrollToElement($element);
+    } else {
+      this.scrollTo();
+    }
   }
 
   onDeleteRecipe() {
     this.recipeService.deleteRecipe(this.id);
     this.router.navigate(['/recipes']);
+  }
+
+  scrollTo(): void {
+    var headerOffset = 87;
+    window.scrollTo({
+      top: headerOffset,
+      behavior: 'smooth',
+    });
+  }
+
+  deleteScrollTo(): void {
+    if (screen.width > 767) {
+      var headerOffset = 87;
+      window.scrollTo({
+        top: headerOffset,
+        behavior: 'smooth',
+      });
+    }
   }
 }

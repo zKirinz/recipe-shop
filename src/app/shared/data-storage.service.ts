@@ -17,18 +17,18 @@ export class DataStorageService {
     const recipes = this.recipeService.getRecipes();
     this.http
       .put(
-        'https://recipe-shopping-angular-b7b04-default-rtdb.asia-southeast1.firebasedatabase.app/recipes.json',
+        'https://udemy-37087-default-rtdb.asia-southeast1.firebasedatabase.app/recipe-shop-Angular/recipes.json',
         recipes
       )
-      .subscribe((response) => {
-        console.log(response);
+      .subscribe(() => {
+        console.log('Stored new recipe successfully!');
       });
   }
 
   fetchRecipes() {
     return this.http
       .get<Recipe[]>(
-        'https://recipe-shopping-angular-b7b04-default-rtdb.asia-southeast1.firebasedatabase.app/recipes.json'
+        'https://udemy-37087-default-rtdb.asia-southeast1.firebasedatabase.app/recipe-shop-Angular/recipes.json'
       )
       .pipe(
         map((recipes) => {

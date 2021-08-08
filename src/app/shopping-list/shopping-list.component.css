@@ -1,0 +1,61 @@
+.selectedItem {
+  background-color: lightsteelblue;
+}
+
+.myFont {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.list-group {
+  max-height: 300px;
+  margin-bottom: 10px;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+  .ingredientsTable {
+    -webkit-box-shadow: 0px 0px 82px 45px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 0px 82px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 82px 45px rgba(0, 0, 0, 0.1);
+  }
+
+  .myShadow {
+    -webkit-box-shadow: 0px 0px 173px 45px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 0px 173px 45px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 0px 173px 45px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.fade li {
+  transition: all 1s ease-out;
+  opacity: 0;
+  height: 1px;
+}
+
+.fade li.show {
+  height: auto;
+  opacity: 1;
+  transition: all 0.25s ease-out;
+}
+
+@media (max-width: 767px) {
+  .myFont {
+    font-size: smaller;
+  }
+  #ingredientsList {
+    font-size: smaller;
+  }
+  .makeMeSmall {
+    font-size: smaller;
+  }
+  .smallerListItem {
+    padding: 6px;
+  }
+
+  .correspondingList {
+    max-height: 175px;
+  }
+}
